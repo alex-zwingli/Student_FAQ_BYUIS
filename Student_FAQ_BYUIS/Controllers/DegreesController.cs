@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Student_FAQ_BYUIS.Models;
+using Student_FAQ_BYUIS.DAL;
 
 namespace Student_FAQ_BYUIS.Controllers
 {
     public class DegreesController : Controller
     {
+
+        DegreeContext db = new DegreeContext();
+
         // GET: Degrees
         public ActionResult Index()
         {
@@ -22,16 +27,28 @@ namespace Student_FAQ_BYUIS.Controllers
 
         public ActionResult DegreeInfo(string degree)
         {
+            int id;
+
             if (degree == "MISM")
             {
                 ViewBag.degreeAccronym = "MISM";
                 ViewBag.degreeName = "Masters in Information Systems Management";
+                id = 2;
             }
             else
             {
                 ViewBag.degreeAccronym = "BSIS";
                 ViewBag.degreeName = "Bachelor of Science in Information Systems";
+                id = 1;
             }
+
+            DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
+
+            DegreeInfo.Degrees = db.Degrees.Find(id);
+            DegreeInfo.Coordinators = db.Coordinators.Find(DegreeInfo.Degrees.CoordinatorID);
+            DegreeInfo.Questions.ToList();
+
+
             return View();
         }
     }

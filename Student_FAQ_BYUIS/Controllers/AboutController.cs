@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Student_FAQ_BYUIS.DAL;
+using Student_FAQ_BYUIS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace Student_FAQ_BYUIS.Controllers
 {
     public class AboutController : Controller
     {
+        DegreeContext db = new DegreeContext();
+
         string controller = "About";
 
         //Overloaded methods that generate bootstrap breadcrumb navigation
@@ -42,40 +46,39 @@ namespace Student_FAQ_BYUIS.Controllers
         }
         public ActionResult DegreeInfo(string degree)
         {
+
+            int id;
+
             ViewBag.statusDegrees = "active";
 
             //Dynamically return content based on degree
             if (degree == "MISM")
             {
-                ViewBag.degreeAccronym = "MISM";
-                ViewBag.degreeName = "Masters in Information Systems Management";
-                ViewBag.CoordinatorName = "Bonnie Anderson";
-                ViewBag.CoordinatorTitle = "<span><b>Associate Professor of Information Systems</b></span>,<br><span class=\"deptLink\"><a href=\"https://marriottschool.byu.edu/directory/departmental#dept-5\">Information Systems, Department of</a>";
-                ViewBag.CoordinatorOfficeAddress = "776 TNRB";
-                ViewBag.CoordinatorPhDEducation = "PhD, Information Systems, Carnegie Mellon University, 2001";
-                ViewBag.CoordinatorMastersEducation = "MAcc, Information Systems, Brigham Young University, 1995";
-                ViewBag.CoordinatorBachelorsEducation = "BS, Accounting, Brigham Young University, 1995";
-                ViewBag.CoordinatorImage = "https://marriottschool.byu.edu/msmadmin/securefile/empphoto/?file=b0%2F1478.jpg";
+                id = 2;
             }
             else
             {
-                ViewBag.degreeAccronym = "BSIS";
-                ViewBag.degreeName = "Bachelor of Science in Information Systems";
-                ViewBag.CoordinatorName = "Dr.Albrecht";
-                ViewBag.CoordinatorTitle = "<span><b>Professor of Information Systems</b></span>,<br><span class=\"deptLink\"><a href=\"https://marriottschool.byu.edu/directory/departmental#dept-5\">Information Systems, Department of</a></span>";
-                ViewBag.CoordinatorOfficeAddress = "780 TNRB";
-                ViewBag.CoordinatorPhDEducation = "N/A";
-                ViewBag.CoordinatorMastersEducation = "N/A";
-                ViewBag.CoordinatorBachelorsEducation = "N/A";
-                ViewBag.CoordinatorImage = "https://marriottschool.byu.edu/msmadmin/securefile/empphoto/?file=b0%2F5293.jpg";
+                id = 1;
             }
+
+            DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
+
+            DegreeInfo.Degrees = db.Degrees.Find(id);
+            DegreeInfo.Coordinators = db.Coordinators.Find(DegreeInfo.Degrees.CoordinatorID);
+            DegreeInfo.Questions = db.Database.SqlQuery<Questions>("SELECT * FROM Question WHERE (Question.DegreeID = " + id + ");");
 
             string name = degree;
 
             ViewBag.BreadCrumb = BreadCrumb(name, "Degrees", "Degrees");
 
+            return View(DegreeInfo);
+        }
+
+        public ActionResult FAQ()
+        {
             return View();
         }
+
 
         // BS Info Sys Tab
         public ActionResult BSInfoSys()

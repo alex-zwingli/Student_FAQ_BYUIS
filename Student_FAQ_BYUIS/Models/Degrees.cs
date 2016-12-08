@@ -14,6 +14,8 @@ namespace Student_FAQ_BYUIS.Models
         [ScaffoldColumn(false)]
         public int DegreeID { get; set; }
 
+        public string Abbrev { get; set; }
+
         [Required(ErrorMessage = "Please enter a name.")]
         [StringLength(50, ErrorMessage = "Name is too long for data entry.")]
         public string Name { get; set; }

@@ -19,6 +19,6 @@ namespace Student_FAQ_BYUIS.Models
         public string Education_PhD { get; set; }
         public string Education_Masters { get; set; }
         public string Education_Bachelors { get; set; }
-        public Image MyProperty { get; set; }
+        public string Image { get; set; }
     }
 }

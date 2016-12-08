@@ -298,6 +298,7 @@
     <Content Include="Views\Degrees\Index.cshtml" />
     <Content Include="Views\About\DegreeInfo.cshtml" />
     <Content Include="Views\About\Degrees.cshtml" />
+    <Content Include="Views\About\FAQ.cshtml" />
     <None Include="Views\Home\void.cshtml" />
     <Content Include="Views\Shared\_LayoutSideNav.cshtml" />
   </ItemGroup>
