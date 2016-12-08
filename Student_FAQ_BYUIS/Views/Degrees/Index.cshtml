@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <link href="~/Content/degrees-view.css" type="text/css" rel="stylesheet" />
+</main>
+
+<div class="jumbotron">
+    <div class="form-deader"></div>
+    <form class="form-horizontal  landing-jumbo-content">
+        <fieldset>
+            <div class="row center-content">
+                <h1>Select a Degree</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-4 col-xs-4 col-xs-offset-4">
+                        @Html.DropDownList("DegreeNames", null, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    <p>@Html.ActionLink("View", "View", "Degree", new { @class="btn btn-info" })</p>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

@@ -1,0 +1,198 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <link href="~/Content/landing_page.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+</main>
+
+<!-- Jumbotron -->
+<div class="container">
+    <div class="jumbotron">
+        <div class="container landing-jumbo-content">
+            <h1>Information Systems</h1>
+            <p class="lead">In a world of growing technology, take the lead and put it at your fingertips. It's fun, trust us.</p>
+            <p><a class="btn btn-primary btn-lg" href="/About">Learn more &raquo;</a></p>
+        </div>
+
+    </div>
+</div>
+<!-- /Jumbotron -->
+@*<div class="container">
+    <div class="row">
+        <div class="col-lg-12 hidden-md hidden-sm hidden-xs">lg</div>
+        <div class="hidden-lg col-md-12 hidden-sm hidden-xs">md</div>
+        <div class="hidden-lg hidden-md col-sm-12 hidden-xs">sm</div>
+        <div class="hidden-lg hidden-md hidden-sm col-cs-12">xs</div>
+    </div>
+</div>*@
+
+
+<div class="container">
+    <div class="col-md-8 col-md-push-4">
+        <!-- 'Degrees' Section -->
+        <div class="row section">
+            <!-- Text -->
+            <div class="col-md-5 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <hr class="bar" />
+                <div class="clearfix"></div>
+                <h2>Degrees</h2>
+                <p>Explore your future in Information Systems with our various degree programs. Find the one that works best for you and start living your dream.</p>
+                <p><a class="btn btn-default" @Html.ActionLink("Explore", "Catalog", "Degrees")</a></p>
+            </div>
+            <!-- Image -->
+            <div class="col-md-5 col-sm-5 col-md-offset-0 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <img class="img-responsive img-thumbnail" src="~/img/degree.jpg" alt="degree" />
+            </div>
+        </div>
+        <!-- /'Degrees' Section -->
+
+        <!-- 'About Us' Section -->
+        <div class="row section-alt">
+            <!-- Text -->
+            <div class="col-md-5 col-md-push-6 col-sm-4 col-sm-push-6 col-xs-10 col-xs-offset-1">
+                <hr class="bar" />
+                <div class="clearfix"></div>
+                <h2>About Us</h2>
+                <div class="description">
+                    <p>Our department is dedicated to giving you every resource to jumpstart your career and achieve your dreams. Your preperation and success is our passion.</p>
+                </div>
+                <p><a class="btn btn-default" @Html.ActionLink("Meet Us", "About", "Home")</a></p>
+            </div>
+            <!-- Image -->
+            <div class="col-md-5 col-md-pull-6 col-sm-5 col-sm-pull-5 col-xs-10 col-xs-offset-1">
+                <hr class="clearfix hidden-lg visible-md hidden-xs"/>
+                <img class="img-responsive img-thumbnail" src="~/img/business-woman.jpg" alt="business woman" />
+            </div>
+        </div>
+        <!-- /'About Us' Section -->
+
+        <!-- 'Build Your Network' Section -->
+        <div class="row section">
+            <!-- Text -->
+            <div class="col-md-5 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <hr class="bar" />
+                <div class="clearfix"></div>
+                <h2>Build Your Network</h2>
+                <p>Find current students, proffesors, and alumni in information systems to help you along your journey.</p>
+                <p><a class="btn btn-default" href="https://www.linkedin.com/vsearch/p?keywords=Information%20Technology%20and%20Services&school=Brigham%20Young%20University&openAdvancedForm=true&locationType=Y&f_ED=19553&rsid=2225856561477718288192&orig=MDYS&page_num=1&pt=people&openFacets=N,G,CC,ED"><i class="fa fa-linkedin" aria-hidden="true"></i> - Connect</a></p>
+            </div>
+            <!-- Image -->
+            <div class="col-md-5 col-sm-5 col-md-offset-0 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <img class="img-responsive img-thumbnail" src="~/img/TNRB.jpg" alt="tanner building" />
+            </div>
+        </div>
+        <!-- /'Build Your Network' Section -->
+    </div>
+
+    <hr class="hidden-lg hidden-md visible-sm visible-xs" />
+
+    <div class="col-md-4 col-md-pull-8 side-bar">
+        <div class="row visible-lg visible-md hidden-xs pull-left"></div>
+        <!-- Panel for side bar -->
+        <div class="panel-responsive panel panel-primary pull-left visible-lg visible-md hidden-sm hidden-xs">
+            <div class="panel-heading">
+                <div class="panel-title">@ViewBag.author</div>
+            </div>
+            <div class="panel-body">
+                @ViewBag.quote
+            </div>
+        </div>
+        <!-- Repeat of panel for small screens -->
+        <div class="panel-responsive panel panel-primary hidden-lg hidden-md visible-sm visible-xs">
+            <div class="panel-heading">
+                <div class="panel-title">@ViewBag.author</div>
+            </div>
+            <div class="panel-body">
+                @ViewBag.quote
+            </div>
+        </div>
+        <div class="clearfix hidden-lg hidden-md visible-sm visible-xs"></div>
+        <div class="responsiveCal hidden-lg hidden-md visible-sm visible-xs">
+            <iframe src="https://www.google.com/calendar/embed?src=ais.byu%40gmail.com&amp;ctz=America/Denver" style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="panel panel-primary pull-left hidden-sm hidden-xs">
+            <div class="panel-heading">
+                <div class="panel-title">AIS Calendar</div>
+            </div>
+            <div class="panel-body">
+                <!-- Calendar visible on lg (custom fitted) -->
+                <iframe class="visible-lg hidden-md hidden-sm hidden-xs" src="https://www.google.com/calendar/embed?src=ais.byu%40gmail.com&amp;ctz=America/Denver" style="border: 0" height="600" width="318" frameborder="0" scrolling="no"></iframe>
+                <!-- Agenda visible on md (custom fitted)-->
+                <iframe class="hidden-lg visible-md hidden-sm hidden-cs" src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ais.byu%40gmail.com&amp;color=%23711616&amp;ctz=America%2FDenver" style="border-width:0" width="251" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+
+    <!-- News Items -->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-title">News in Information Systems</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="thumbnail col-md-3 col-sm-6">
+                    <img src="https://marriottschool.byu.edu/upload/news/images/1169-finals_thumbnail_reel.jpg" alt="bell tower link" />
+                    <div class="content">
+                        <p><b>U.S. News Ranks Marriott School</b></p>
+                        <p>When it comes to getting a superb education for a reasonable cost, BYU again ranks as one of the best in the country, according to U.S. News & World Report.</p>
+                        <a href="https://marriottschool.byu.edu/news/article?id=1169" class="btn btn-default btn-sm">Read more</a>
+                    </div>
+                </div>
+                <hr class="hidden-sm visible-xs" />
+                <div class="thumbnail col-md-3 col-sm-6">
+                    <img src="https://marriottschool.byu.edu/upload/news/images/1167-lee-perry-feature-crop1_reel.jpg" alt="dean portrait link" />
+                    <div class="content">
+                        <p><b>Advice From The Dean</b></p>
+                        <p>Dean Lee Perry sat down for a Q&A to offer his thoughts on how Marriott School students can make the most out of their new semester.</p>
+                        <a href="https://marriottschool.byu.edu/news/article?id=1167" class="btn btn-default btn-sm">Read more</a>
+                    </div>
+                </div>
+                <hr class="hidden-sm visible-xs" />
+                <div class="thumbnail col-md-3 col-sm-6">
+                    <img src="https://marriottschool.byu.edu/upload/news/images/1164-is_professors_reel.jpeg" alt="dream team link" />
+                    <div class="content">
+                        <p><b>Why We Disregard Security Warnings</b></p>
+                        <p>Software developers listen up: if you want people to pay attention to your security warnings on their computers or mobile devices, you need to make them pop up at better times.</p>
+                        <a href="https://marriottschool.byu.edu/news/article?id=1164" class="btn btn-default btn-sm">Read more</a>
+                    </div>
+                </div>
+                <hr class="hidden-sm visible-xs" />
+                <div class="thumbnail col-md-3 col-sm-6">
+                    <img class="conform" src="https://marriottschool.byu.edu/upload/news/images/1160-istock_000023721739large_article.jpg" alt="touch link" />
+                    <div class="content">
+                        <p><b>BYU IS Faculty Among Top Researchers</b></p>
+                        <p>The latest Association of Information Systems research rankings have been released and — once again — BYU’s Marriott School of Management has a view from the top. </p>
+                        <a href="https://marriottschool.byu.edu/news/article?id=1160" class="btn btn-default btn-sm">Read more</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 'Need Help?' Section -->
+<div class="container section">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            <hr class="bar" />
+            <div class="clearfix"></div>
+            <h2>Need Help?</h2>
+            <p>Need more informaton or need help making a plan? Reach out and we'll do all that we can to help you along this journey. </p>
+            <p><a class="btn btn-default" @Html.ActionLink("Contact", "Contact", "Home")</a></p>
+
+        </div>
+        <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            <img class="img-responsive img-thumbnail" src="~/img/handshake_forward.jpg" alt="handshake_forward" />
+        </div>
+    </div>
+</div>
+<!-- /'Need Help?' Section-->

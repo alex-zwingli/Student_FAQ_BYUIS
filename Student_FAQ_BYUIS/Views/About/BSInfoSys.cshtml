@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "BS Info Sys";
+    Layout = "~/Views/Shared/_LayoutSideNav.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>BS Info Sys</h3>
+    </div>
+    <div class="col-xs-offset-1">
+        <p><a @Html.ActionLink("Rankings", "Rankings", "About")</p>
+        <p><a @Html.ActionLink("Awards", "Awards", "About")</p>
+        <p><a @Html.ActionLink("Mission Statement", "MissionStatement", "About")</p>
+    </div>
+</div>

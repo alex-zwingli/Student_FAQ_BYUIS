@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <p></p>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Contact Us</li>
+            </ol>
+            <h2>Contact Us</h2>
+            <p>You are welcome to contact Caroline Thorne with any questions regarding any of the Information Systems programs.</p>
+        </div>
+    </div>
+    <p> </p>
+    <!-- Support Staff -->
+    <div class="row">
+        <div class="col-sm-2 col-sm-offset-2">
+            <img src="https://marriottschool.byu.edu/msmadmin/person/securefile/empphoto/?file=b3%2F30648.jpg" height="250" alt="Caroline Thorne profile link" />
+        </div>
+        <div class="col-sm-3">
+            <h3>Caroline Thorne</h3>
+            <p>
+                <br />
+                <b>Program Advisor</b>,
+                <a href="https://marriottschool.byu.edu/directory/departmental#InformationSystems,Departmentof">Information Systems, Department of</a>
+                <br />
+                <br />
+                <b>Office:</b> 789 TNRB
+                <br />
+                <b>Phone:</b> (801) 422-5602
+                <br />
+                <b>Email:</b>
+                <a href="mailto:is.advisor@byu.edu">is.advisor@byu.edu</a>
+            </p>
+        </div>
+    </div>
+    <!-- /Support Staff-->
+    <hr />
+    <!-- Contact Form -->
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 well">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Send a Message</legend>
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <div class="col-lg-10">
+                            @Html.TextBox("Name", "", new { type = "text", id = "inputName", @class = "form-control", placeholder = "Full Name", required = true, autofocus = true })
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-10">
+                            @Html.TextBox("Email", "", new { type = "email", id = "inputEmail", @class = "form-control", placeholder = "someone@example.com", required = true })
+                            <p>@Html.CheckBox("ReceiveEmail", (bool)ViewBag.ReceiveEmail) Receive confirmation email</p>
+                        </div>
+                    </div>
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="selectSubject" class="col-lg-2 control-label">Subject</label>
+                        <div class="col-lg-10">
+                            @Html.DropDownList("SubjectOptions", null, new { id = "selectSubject", @class = "form-control", required = "true" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage" class="col-lg-2 control-label">Message</label>
+                        <div class="col-lg-10">
+                            @Html.TextArea("Message", new { type = "text", id = "inputMessage", @class = "form-control", style = "min-height: 100px;", placeholder = "Write message here.", required = true })
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<iframe height="450"
+        frameborder="0"
+        style="border:0; width: 100%;"
+        src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyB2S-8UzLQqi7mRRqLqU90THg8NQxCBAwo&origin=Current+Location&destination=Eldon+Tanner+Building%2C+Campus+Drive%2C+Provo%2C+UT+84604&avoid=tolls|highways" allowfullscreen></iframe>

@@ -1,0 +1,26 @@
+﻿body {
+    background-color: #efeff5;
+}
+
+.jumbotron {
+    background-image: url(../img/tech_in_palm.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    max-height: 300px;
+    
+}
+
+.landing-jumbo-content {
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 3px 2px 3px black;
+    font-family: 'Lucida Console', Monaco, monospace;
+}
+
+.center-content {
+    text-align: center;
+}
