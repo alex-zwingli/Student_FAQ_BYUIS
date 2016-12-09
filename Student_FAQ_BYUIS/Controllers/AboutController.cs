@@ -2,6 +2,7 @@
 using Student_FAQ_BYUIS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -95,6 +96,25 @@ namespace Student_FAQ_BYUIS.Controllers
             return RedirectToAction("DegreeInfo", new { degree = TempData["DegreeName"] });
         }
 
+        [HttpPost]
+        public ActionResult UpdateAnswer([Bind(Include = "QuestionID,DegreeID,UserID,Question,Answer")] DegreeCoordinatorQuestions Model)
+        {
+
+
+
+            // Get current user
+            Users CurrentUser = db.Database.SqlQuery<Users>("SELECT * From Users WHERE (Email = '" + User.Identity.Name + "');").FirstOrDefault<Users>();
+
+            // Use SQL to update database
+
+            db.Database.ExecuteSqlCommand("UPDATE Question SET Answer = '" + Model.Question.Answer + "' WHERE (QuestionID = " + Model.Question.QuestionID + ");");
+
+            // Preserve TempData
+            string DegreeName = (string)TempData["DegreeName"];
+            TempData["DegreeName"] = DegreeName;
+
+            return RedirectToAction("DegreeInfo", new { degree = DegreeName });
+        }
 
 
 
