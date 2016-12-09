@@ -7,6 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+//Home Controller
+//This controller will have all the information regarding the home page
+
+ //no authorization is needed for the home controller
+
 namespace Student_FAQ_BYUIS.Controllers
 {
     public class HomeController : Controller
@@ -16,6 +21,7 @@ namespace Student_FAQ_BYUIS.Controllers
         public ActionResult Index()
         {
             //Create multidimensional ist to store quotes and autor seperately
+            //hardcoding quotes
             string[] quotes = new string[2];
             List<string[]> quoteCatalog = new List<string[]>();
             quoteCatalog.Add(new string[2] {

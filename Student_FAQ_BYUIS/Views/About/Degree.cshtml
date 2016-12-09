@@ -1,0 +1,46 @@
+﻿@model Student_FAQ_BYUIS.Models.DegreeCoordinatorQuestions
+
+@{
+    ViewBag.Title = "Degrees";
+    Layout = "~/Views/Shared/_LayoutSideNav.cshtml";
+}
+<main>
+    <link href="~/Content/degrees-view.css" type="text/css" rel="stylesheet" />
+</main>
+
+<div class="jumbotron">
+    <div class="form-deader"></div>
+    <form class="form-horizontal  landing-jumbo-content">
+        <fieldset>
+            <div class="row center-content">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h1>@Html.DisplayFor(model => model.Degrees.Name)</h1>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="row">
+            <div class="col-md-4 col-sm-5">
+                <p><br /></p>
+                <img src="@Html.DisplayFor(model => model.Coordinators.Image)" height="250" alt="Coordinator Profile" />
+            </div>
+            <div class="col-sm-7">
+                <h2>@Html.DisplayFor(model => model.Coordinators.Name)  </h2>
+                <h3>@Html.DisplayFor(model => model.Degrees.Abbrev) Coordinator  </h3>
+                <p>
+                    <br />
+                    @Html.DisplayFor(model => model.Coordinators.Title)<br />
+                    <br />
+                    <b>Office: </b>@Html.DisplayFor(model => model.Coordinators.OfficeAddress)<br />
+                    <b>PhD Education: </b>@Html.DisplayFor(model => model.Coordinators.Education_PhD)<br />
+                    <b>Masters Education: </b>@Html.DisplayFor(model => model.Coordinators.Education_Masters)<br />
+                    <b>Bachelors Education: </b>@Html.DisplayFor(model => model.Coordinators.Education_Bachelors)<br />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

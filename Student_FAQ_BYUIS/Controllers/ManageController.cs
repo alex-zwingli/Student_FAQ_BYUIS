@@ -8,6 +8,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Student_FAQ_BYUIS.Models;
 
+//manage controller
+
+//this controller is designed to handle all the information regrading managing
 namespace Student_FAQ_BYUIS.Controllers
 {
     [Authorize]

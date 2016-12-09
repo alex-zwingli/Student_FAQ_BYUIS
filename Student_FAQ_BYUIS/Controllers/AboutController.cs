@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//Controller is designed to display information regarding the about information for the major
+
 namespace Student_FAQ_BYUIS.Controllers
 {
     public class AboutController : Controller
@@ -46,8 +48,37 @@ namespace Student_FAQ_BYUIS.Controllers
             return View();
         }
 
+        public ActionResult Degree(string degree)
+        {
+            int id;
+
+            ViewBag.statusDegrees = "active";
+
+            //Dynamically return content based on degree
+            if (degree == "MISM")
+            {
+                id = 2;
+            }
+            else
+            {
+                id = 1;
+            }
+
+            TempData["DegreeID"] = id;
+            TempData["DegreeName"] = degree;
+
+            // Fetch Model
+            DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
+
+            // Populate Model
+            DegreeInfo.Degrees = db.Degrees.Find(id);
+            DegreeInfo.Coordinators = db.Coordinators.Find(DegreeInfo.Degrees.CoordinatorID);
+
+            return View(DegreeInfo);
+        }
 
         [HttpGet]
+        [Authorize]
         public ActionResult DegreeInfo(string degree)
         {
 
@@ -81,6 +112,7 @@ namespace Student_FAQ_BYUIS.Controllers
             return View(DegreeInfo);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult DegreeInfo(DegreeCoordinatorQuestions Model)
         {
             //Insert additional question information
@@ -97,6 +129,7 @@ namespace Student_FAQ_BYUIS.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult UpdateAnswer([Bind(Include = "QuestionID,DegreeID,UserID,Question,Answer")] DegreeCoordinatorQuestions Model)
         {
 

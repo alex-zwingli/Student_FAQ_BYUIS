@@ -25,8 +25,11 @@
                     <li class="dropdown @ViewBag.statusDegrees">
                         <a href="#" class="dropdown-toggle @ViewBag.statusDegrees" data-toggle="dropdown">Degrees <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("BSIS", "DegreeInfo", "About", new { degree = "BSIS" }, null)</li>
-                            <li>@Html.ActionLink("MISM", "DegreeInfo", "About", new { degree = "MISM" }, null)</li>
+                            <li>@Html.ActionLink("BSIS", "Degree", "About", new { degree = "BSIS" }, null)</li>
+                            <li>@Html.ActionLink("BSIS - FAQ", "DegreeInfo", "About", new { degree = "BSIS" }, null)</li>
+                            <li>@Html.ActionLink("MISM", "Degree", "About", new { degree = "MISM" }, null)</li>
+                            <li>@Html.ActionLink("MISM - FAQ", "DegreeInfo", "About", new { degree = "MISM" }, null)</li>
+
                         </ul>
                     </li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>

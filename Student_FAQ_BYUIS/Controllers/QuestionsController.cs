@@ -9,6 +9,10 @@ using System.Web.Mvc;
 using Student_FAQ_BYUIS.DAL;
 using Student_FAQ_BYUIS.Models;
 
+//this controller does require authrentication
+
+ //only those users who are authenticated can access the FAQ page
+
 namespace Student_FAQ_BYUIS.Controllers
 {
     public class QuestionsController : Controller

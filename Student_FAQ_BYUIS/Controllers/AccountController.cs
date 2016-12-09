@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Student_FAQ_BYUIS.Models;
 
+//This controller has information regarding the account
+
 namespace Student_FAQ_BYUIS.Controllers
 {
     [Authorize]
@@ -28,6 +30,8 @@ namespace Student_FAQ_BYUIS.Controllers
             SignInManager = signInManager;
         }
 
+
+        //sign in manager
         public ApplicationSignInManager SignInManager
         {
             get
@@ -40,6 +44,7 @@ namespace Student_FAQ_BYUIS.Controllers
             }
         }
 
+        //user manager
         public ApplicationUserManager UserManager
         {
             get

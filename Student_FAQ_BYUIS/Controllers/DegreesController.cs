@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Student_FAQ_BYUIS.Models;
 using Student_FAQ_BYUIS.DAL;
 
+//this degree controller is designed to handle all the logic regarding the degree views. 
+//everyone can access the degree controller, no authentication required
+
 namespace Student_FAQ_BYUIS.Controllers
 {
     public class DegreesController : Controller
