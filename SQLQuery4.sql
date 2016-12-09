@@ -1,0 +1,1 @@
+﻿SELECT * From Users WHERE (Email = 'alex.zwingli@outlook.com');

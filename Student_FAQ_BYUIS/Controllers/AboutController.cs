@@ -2,6 +2,7 @@
 using Student_FAQ_BYUIS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -65,6 +66,7 @@ namespace Student_FAQ_BYUIS.Controllers
             }
 
             TempData["DegreeID"] = id;
+            TempData["DegreeName"] = degree;
 
             DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
 
@@ -83,17 +85,36 @@ namespace Student_FAQ_BYUIS.Controllers
         {
             //Insert additional question information
             Model.Question.DegreeID = (int)TempData["DegreeID"];
-            Model.Question.UserID = Convert.ToInt16(db.Database.SqlQuery<Users>("Select UserID From Users Where (Email = " + User.Identity.Name + ");").FirstOrDefault().ToString());
-
-            string test = User.Identity.Name;
+            Users CurrentUser = db.Database.SqlQuery<Users>("SELECT * From Users WHERE (Email = '" + User.Identity.Name + "');").FirstOrDefault<Users>();
+            Model.Question.UserID = CurrentUser.UserID;
+            Model.Question.Answer = "This question has yet to be answered.";
 
             //Save new entry in Database
             db.Questions.Add(Model.Question);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("DegreeInfo", new { degree = TempData["DegreeName"] });
         }
 
+        [HttpPost]
+        public ActionResult UpdateAnswer([Bind(Include = "QuestionID,DegreeID,UserID,Question,Answer")] DegreeCoordinatorQuestions Model)
+        {
+
+
+
+            // Get current user
+            Users CurrentUser = db.Database.SqlQuery<Users>("SELECT * From Users WHERE (Email = '" + User.Identity.Name + "');").FirstOrDefault<Users>();
+
+            // Use SQL to update database
+
+            db.Database.ExecuteSqlCommand("UPDATE Question SET Answer = '" + Model.Question.Answer + "' WHERE (QuestionID = " + Model.Question.QuestionID + ");");
+
+            // Preserve TempData
+            string DegreeName = (string)TempData["DegreeName"];
+            TempData["DegreeName"] = DegreeName;
+
+            return RedirectToAction("DegreeInfo", new { degree = DegreeName });
+        }
 
 
 
