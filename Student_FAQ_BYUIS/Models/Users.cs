@@ -11,7 +11,7 @@ namespace Student_FAQ_BYUIS.Models
     public class Users
     {
         [Key]
-        public int MyProperty { get; set; }
+        public int UserID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string FName { get; set; }

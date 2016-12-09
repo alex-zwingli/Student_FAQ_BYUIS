@@ -10,7 +10,7 @@ namespace Student_FAQ_BYUIS.Controllers
 {
     public class AboutController : Controller
     {
-        DegreeContext db = new DegreeContext();
+        private DegreeContext db = new DegreeContext();
 
         string controller = "About";
 
@@ -44,6 +44,9 @@ namespace Student_FAQ_BYUIS.Controllers
             ViewBag.BreadCrumb = BreadCrumb("Degrees");
             return View();
         }
+
+
+        [HttpGet]
         public ActionResult DegreeInfo(string degree)
         {
 
@@ -61,6 +64,8 @@ namespace Student_FAQ_BYUIS.Controllers
                 id = 1;
             }
 
+            TempData["DegreeID"] = id;
+
             DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
 
             DegreeInfo.Degrees = db.Degrees.Find(id);
@@ -73,6 +78,24 @@ namespace Student_FAQ_BYUIS.Controllers
 
             return View(DegreeInfo);
         }
+        [HttpPost]
+        public ActionResult DegreeInfo(DegreeCoordinatorQuestions Model)
+        {
+            //Insert additional question information
+            Model.Question.DegreeID = (int)TempData["DegreeID"];
+            Model.Question.UserID = Convert.ToInt16(db.Database.SqlQuery<Users>("Select UserID From Users Where (Email = " + User.Identity.Name + ");").FirstOrDefault().ToString());
+
+            string test = User.Identity.Name;
+
+            //Save new entry in Database
+            db.Questions.Add(Model.Question);
+            db.SaveChanges();
+
+            return View();
+        }
+
+
+
 
         public ActionResult FAQ()
         {

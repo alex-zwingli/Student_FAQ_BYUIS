@@ -45,12 +45,77 @@
     </div>
 </div>
 
-@foreach (var item in Model.Questions)
-{
-    <p>@Html.DisplayFor(Modelitem => item.Question)</p>
-    <p>@Html.DisplayFor(Modelitem => item.Answer)</p>
+
 }
 
 
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d1522.568899003646!2d-111.65324389695755!3d40.25046879385872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x874d90bb6adb91e7%3A0x4858f3307ac3d0b2!2sN.+Eldon+Tanner+Building%2C+Campus+Drive%2C+Provo%2C+UT+84604!3m2!1d40.2504348!2d-111.6525023!5e0!3m2!1sen!2sus!4v1478060825679" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <h1>Frequently Askey Questions</h1>
+
+        <!-- List all FAQ from database -->
+        @foreach (var item in Model.Questions)
+        {
+            <h3>@Html.DisplayFor(Modelitem => item.Question)</h3>
+            <p>@Html.DisplayFor(Modelitem => item.Answer)</p>
+
+            <div class="row">
+                <div class="well">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-lg-8">
+                                    @Html.TextArea("Response", new { type = "text", id = "inputResponse", @class = "form-control", style = "min-height: 50px;", placeholder = "Write your response here.", required = true })
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Ask a new question</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-offset-1">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <div class="">
+                                            <textarea class="form-control text-box single-line" id="Question_Question" name="Question.Question" type="text" value=""></textarea>
+                                            @Html.ValidationMessageFor(model => model.Question.Question, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    @Html.HiddenFor(model => model.Question.DegreeID, new { value="1"} )
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="reset" value="Cancel" class="btn btn-default" />
+                                            <input type="submit" value="Ask" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
