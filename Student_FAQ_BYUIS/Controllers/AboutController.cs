@@ -65,6 +65,7 @@ namespace Student_FAQ_BYUIS.Controllers
             }
 
             TempData["DegreeID"] = id;
+            TempData["DegreeName"] = degree;
 
             DegreeCoordinatorQuestions DegreeInfo = new DegreeCoordinatorQuestions();
 
@@ -83,15 +84,15 @@ namespace Student_FAQ_BYUIS.Controllers
         {
             //Insert additional question information
             Model.Question.DegreeID = (int)TempData["DegreeID"];
-            Model.Question.UserID = Convert.ToInt16(db.Database.SqlQuery<Users>("Select UserID From Users Where (Email = " + User.Identity.Name + ");").FirstOrDefault().ToString());
-
-            string test = User.Identity.Name;
+            Users CurrentUser = db.Database.SqlQuery<Users>("SELECT * From Users WHERE (Email = '" + User.Identity.Name + "');").FirstOrDefault<Users>();
+            Model.Question.UserID = CurrentUser.UserID;
+            Model.Question.Answer = "This question has yet to be answered.";
 
             //Save new entry in Database
             db.Questions.Add(Model.Question);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("DegreeInfo", new { degree = TempData["DegreeName"] });
         }
 
 
